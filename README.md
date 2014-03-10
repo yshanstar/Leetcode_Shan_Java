@@ -1,4 +1,4 @@
 Leetcode_Shan_Java
 ==================
 
-Leetcode by Java
+Crack Leetcode by Java
