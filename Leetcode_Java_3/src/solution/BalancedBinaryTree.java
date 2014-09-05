@@ -1,6 +1,6 @@
 package solution;
 
-import Util.TreeNode;
+import util.TreeNode;
 
 public class BalancedBinaryTree {
 	public boolean isBalanced(TreeNode root) {

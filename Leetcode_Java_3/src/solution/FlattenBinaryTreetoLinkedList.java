@@ -1,6 +1,6 @@
 package solution;
 
-import Util.TreeNode;
+import util.TreeNode;
 
 public class FlattenBinaryTreetoLinkedList {
 	public void flatten(TreeNode root) {

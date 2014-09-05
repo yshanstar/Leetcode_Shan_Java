@@ -2,7 +2,7 @@ package solution;
 
 import java.util.HashMap;
 
-import Util.TreeNode;
+import util.TreeNode;
 
 public class ConstructBinaryTreefromPreorderandInorderTraversal {
 	public TreeNode buildTree(int[] preorder, int[] inorder) {
