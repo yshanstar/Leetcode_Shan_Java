@@ -7,7 +7,7 @@ public class SortColors {
 		}
 		int redIdx = -1;
 		int blueIdx = A.length;
-		for (int i = 0; i < A.length; i++) {
+		for (int i = 0; i < blueIdx; i++) {
 			if (A[i] == 0) {
 				redIdx++;
 				int tmp = A[redIdx];
