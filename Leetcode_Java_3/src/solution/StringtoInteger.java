@@ -1,7 +1,6 @@
 package solution;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
 public class StringtoInteger {
 	public int atoi(String str) {
