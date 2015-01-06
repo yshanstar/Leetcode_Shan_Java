@@ -11,7 +11,7 @@ package hack.leetcode.dev;
  */
 
 /*
- * Solution1: 二维dp， f(i, j) == f(i, j-1) && s2[j-1] == s3[i+j-1)  OR f(i-1, j) && s1[i-1] == s3[i+j-1],
+ * Solution1: 二维dp�? f(i, j) == f(i, j-1) && s2[j-1] == s3[i+j-1)  OR f(i-1, j) && s1[i-1] == s3[i+j-1],
  *            i, j 代表 s1, s2 的长度，f(i, j) 表示 s1[0, i), s2[0, j) 是否可以interleaving 形成 s3[0, i+j)
  * 
  */

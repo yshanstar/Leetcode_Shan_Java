@@ -2,8 +2,8 @@ package hack.leetcode.dev;
 
 /*
  * Find the contiguous subarray within an array (containing at least one number) which has the largest sum.
- * For example, given the array [âˆ’2,1,âˆ’3,4,âˆ’1,2,1,âˆ’5,4],
- * the contiguous subarray [4,âˆ’1,2,1] has the largest sum = 6. 
+ * For example, given the array [âˆ?2,1,âˆ?3,4,âˆ?1,2,1,âˆ?5,4],
+ * the contiguous subarray [4,âˆ?1,2,1] has the largest sum = 6. 
  */
 public class MaximumSubarray {
 	public int maxSubArray(int[] A) {

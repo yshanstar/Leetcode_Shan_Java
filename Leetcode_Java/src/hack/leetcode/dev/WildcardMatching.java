@@ -8,13 +8,13 @@ package hack.leetcode.dev;
  * The function prototype should be:
  * bool isMatch(const char *s, const char *p)
  * Some examples:
- * isMatch("aa","a") â†’ false
- * isMatch("aa","aa") â†’ true
- * isMatch("aaa","aa") â†’ false
- * isMatch("aa", "*") â†’ true
- * isMatch("aa", "a*") â†’ true
- * isMatch("ab", "?*") â†’ true
- * isMatch("aab", "c*a*b") â†’ false
+ * isMatch("aa","a") â†? false
+ * isMatch("aa","aa") â†? true
+ * isMatch("aaa","aa") â†? false
+ * isMatch("aa", "*") â†? true
+ * isMatch("aa", "a*") â†? true
+ * isMatch("ab", "?*") â†? true
+ * isMatch("aab", "c*a*b") â†? false
  */
 public class WildcardMatching {
 	public static boolean isMatch(String s, String p) {
