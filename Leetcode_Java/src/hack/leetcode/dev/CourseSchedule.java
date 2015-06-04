@@ -49,7 +49,7 @@ public class CourseSchedule {
 		while (!queue.isEmpty()) {
 			int top = queue.remove();
 			for (int i = 0; i < len; i++) {
-				// if a course's prerequisite can be satisfied by a course in
+				// if a course's prerequisite can be satisfied by a course in.
 				// queue
 				if (prerequisites[i][1] == top) {
 					pCounter[prerequisites[i][0]]--;
