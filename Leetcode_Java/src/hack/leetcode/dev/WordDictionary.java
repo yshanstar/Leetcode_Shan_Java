@@ -1,6 +1,7 @@
 package hack.leetcode.dev;
 
-import java.util.HashMap;
+import hack.leetcode.ulti.TrieNode;
+
 import java.util.Map;
 
 /*
@@ -94,21 +95,6 @@ public class WordDictionary {
 			return false;
 		}
 
-	}
-}
-
-class TrieNode {
-	char c;
-	boolean isLeaf;
-	Map<Character, TrieNode> children;
-
-	public TrieNode() {
-		this.children = new HashMap<Character, TrieNode>();
-	}
-
-	public TrieNode(char c) {
-		this.c = c;
-		this.children = new HashMap<Character, TrieNode>();
 	}
 }
 
