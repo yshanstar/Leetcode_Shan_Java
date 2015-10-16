@@ -60,4 +60,14 @@ public class GraphValidTree {
 
 		return false;
 	}
+	
+	public static void main(String []args){
+        for (int i = 0; i < 10; i++)
+    	{
+    		ArrayList<Integer> nums = new ArrayList<Integer>();
+    		nums.add(i);
+    	}
+
+        ArrayList<Integer> nums = new ArrayList<Integer>();
+     }
 }
