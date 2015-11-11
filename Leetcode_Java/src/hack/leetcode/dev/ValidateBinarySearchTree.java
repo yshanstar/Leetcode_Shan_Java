@@ -11,10 +11,10 @@ import hack.leetcode.ulti.TreeNode;
  */
 public class ValidateBinarySearchTree {
 	public boolean isValidBST(TreeNode root) {
-		return isValidBSTHelper(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+		return isValidBSTHelper(root, Long.MIN_VALUE, Long.MAX_VALUE);
 	}
 
-	private boolean isValidBSTHelper(TreeNode node, int low, int high) {
+	private boolean isValidBSTHelper(TreeNode node, long low, long high) {
 		if (node == null) {
 			return true;
 		}
