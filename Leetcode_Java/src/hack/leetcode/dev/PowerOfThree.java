@@ -15,7 +15,7 @@ public class PowerOfThree {
 			n /= 3;
 		}
 
-		return n == 1;
+		return (n == 1);
 	}
 
 	public boolean isPowerOfThree2(int n) {
