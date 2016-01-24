@@ -14,7 +14,7 @@ public class SentencePermutations {
 		Scanner scanner = new Scanner(System.in);
 		String input = scanner.nextLine();
 		scanner.close();
-		
+
 		String s = removeGroups(input);
 		List<List<String>> groups = extractGroups(input);
 
@@ -25,7 +25,7 @@ public class SentencePermutations {
 		if (groupIndex == groups.size()) {
 			String pattern = "#";
 			String result = s;
-			for(String str : permutation){
+			for (String str : permutation) {
 				result = result.replaceFirst(pattern, str);
 			}
 			System.out.println(result);
@@ -33,10 +33,9 @@ public class SentencePermutations {
 		}
 
 		for (String element : groups.get(groupIndex)) {
-			List<String> newPermute = new ArrayList<>(permutation);
-			newPermute.add(element);
-
-			permutations(newPermute, groupIndex + 1, groups, s);
+			permutation.add(element);
+			permutations(permutation, groupIndex + 1, groups, s);
+			permutation.remove(permutation.size() - 1);
 		}
 	}
 
@@ -53,7 +52,7 @@ public class SentencePermutations {
 
 		return groups;
 	}
-	
+
 	public static String removeGroups(String value) {
 		String regex = "\\{([^\\}]+)}";
 		value = value.replaceAll(regex, "#");
