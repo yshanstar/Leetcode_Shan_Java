@@ -19,8 +19,9 @@ public class MyStack {
 	// Removes the element on top of the stack.
 	public void pop() {
 		if (!q1.isEmpty()) {
-			for (int i = 0; i < q1.size() - 1; i++) {
-				if (i == q1.size() - 2) {
+			int n = q1.size();
+			for (int i = 0; i < n - 1; i++) {
+				if (i == n - 2) {
 					topElement = q1.peek();
 				}
 				q2.add(q1.poll());
