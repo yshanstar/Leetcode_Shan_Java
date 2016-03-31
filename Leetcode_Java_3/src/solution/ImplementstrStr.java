@@ -1,7 +1,5 @@
 package solution;
 
-import java.util.List;
-
 /*
  * Implement strStr().
  * Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
@@ -53,7 +51,7 @@ public class ImplementstrStr {
 
 			if (i < m && haystack.charAt(i) != needle.charAt(j)) {
 				if (j != 0) {
-					i = (i-j) + j - lps[j-1];
+					i = (i - j) + j - lps[j - 1];
 					j = 0;
 				} else {
 					i++;
