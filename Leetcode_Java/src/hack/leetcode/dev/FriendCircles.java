@@ -1,9 +1,7 @@
 package hack.leetcode.dev;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Scanner;
 
 /*
  * There are NN students in a class. Some of them are friends, while some are not. Their friendship is transitive in nature, i.e., if AA is friend of BB and BB is friend of CC, then AA is also friend of CC. A friend circle is a group of students who are directly or indirectly friends.
