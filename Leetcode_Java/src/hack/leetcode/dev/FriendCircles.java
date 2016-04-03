@@ -6,7 +6,7 @@ import java.util.Queue;
 /*
  * There are NN students in a class. Some of them are friends, while some are not. Their friendship is transitive in nature, i.e., if AA is friend of BB and BB is friend of CC, then AA is also friend of CC. A friend circle is a group of students who are directly or indirectly friends.
 
- You are given a N×N−matrixN×N−matrix MM which consists of characters Y or N. If M[i][j]=YM[i][j]=Y, then ithith and jthjth students are friends with each other, otherwise not. You have to print the total number of friend circles in the class.
+ You are given a Matrix MM which consists of characters Y or N. If M[i][j]=YM[i][j]=Y, then ithith and jthjth students are friends with each other, otherwise not. You have to print the total number of friend circles in the class.
 
  Input Format 
  First line of the input contains an integer NN - (size of the matrix), followed by N lines each having N characters.
@@ -15,12 +15,11 @@ import java.util.Queue;
  Print the maximum number of friend circles.
 
  Constraints 
- 1≤N≤3001≤N≤300 
  Each element of matrix friends will be Y or N. 
  Number of rows and columns will be equal in the matrix.
 
- M[i][i]=YM[i][i]=Y, where 0≤i<N0≤i<N 
- M[i][j]M[i][j] = M[j][i]M[j][i], where 0≤i<j<N0≤i<j<N
+ M[i][i]=YM[i][i]=Y, where 0<N<N 
+ M[i][j]M[i][j] = M[j][i]M[j][i], where 0<N<N 
  Sample Input#00
 
  4
