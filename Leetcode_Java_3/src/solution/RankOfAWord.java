@@ -1,8 +1,10 @@
 package solution;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 /*
  * Find the rank of the given word when it is arranged alphabetically
@@ -24,7 +26,7 @@ import java.util.Map.Entry;
  */
 public class RankOfAWord {
 
-	public long findRank(String str) {
+	public long findRankII(String str) {
 		long rank = 1;
 		long factor = 1;
 		Map<Character, Integer> charCounts = new HashMap<Character, Integer>();
@@ -46,8 +48,30 @@ public class RankOfAWord {
 		return rank;
 	}
 
+	public long findRankI(String str) {
+		long rank = 1;
+		long factor = 1;
+
+		Set<Character> charSet = new HashSet<Character>();
+
+		for (int i = str.length() - 1; i >= 0; i--) {
+			char c = str.charAt(i);
+			charSet.add(c);
+			for (Character character : charSet) {
+				if (character < c) {
+					rank += factor;
+				}
+			}
+			factor *= str.length() - i;
+		}
+
+		return rank;
+	}
+
 	public static void main(String[] args) {
 		RankOfAWord rank = new RankOfAWord();
-		System.out.println(rank.findRank("baaaaa"));
+		String str = "badc";
+		System.out.println(rank.findRankII(str));
+		System.out.println(rank.findRankI(str));
 	}
 }
