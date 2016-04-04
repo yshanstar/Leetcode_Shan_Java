@@ -116,10 +116,20 @@ public class TwoSumInBST {
 		return res;
 	}
 
-	public void printPairNode(List<NodePair> nodePairList) {
-		for (NodePair pair : nodePairList) {
-			System.out.println(pair.toString());
+	public static String printPairNode(List<NodePair> nodePairList) {
+		StringBuilder sb = new StringBuilder();
+
+		if (nodePairList.isEmpty()) {
+			sb.append("[]");
+			return sb.toString();
 		}
+
+		sb.append("[\n");
+		for (NodePair pair : nodePairList) {
+			sb.append(pair.toString() + "\n");
+		}
+		sb.append("]\n");
+		return sb.toString();
 	}
 
 	public static void main(String[] args) {
@@ -140,6 +150,8 @@ public class TwoSumInBST {
 
 		n2.left = n6;
 
-		t.printPairNode(t.twoSumInBST(n1, 12));
+		System.out.print(printPairNode(t.twoSumInBST(n1, 12)));
+		System.out.print(printPairNode(t.twoSumInBST(n1, 16)));
+		System.out.print(printPairNode(t.twoSumInBST(n1, 6)));
 	}
 }
