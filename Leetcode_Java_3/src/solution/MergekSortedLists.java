@@ -44,4 +44,59 @@ public class MergekSortedLists {
 
 		return head;
 	}
+
+	public ListNode mergeKLists2(ListNode[] lists) {
+		if (lists == null || lists.length == 0) {
+			return null;
+		}
+
+		ListNode head = null;
+		ListNode prev = head;
+
+		PriorityQueue<ListNode> heap = new PriorityQueue<ListNode>(
+				lists.length, new ListNodeComparator());
+
+		for (ListNode listHead : lists) {
+			if (listHead != null) {
+				heap.offer(listHead);
+			}
+		}
+
+		while (heap.size() > 0) {
+			ListNode cur = heap.poll();
+			if (head == null) {
+				head = cur;
+				prev = head;
+			} else {
+				prev.next = cur;
+			}
+			prev = cur;
+			if (cur.next != null) {
+				heap.offer(cur.next);
+			}
+
+		}
+
+		return head;
+	}
+
+	class ListNodeComparator implements Comparator<ListNode> {
+		public int compare(ListNode n1, ListNode n2) {
+			return n1.val - n2.val;
+		}
+	}
+
+	public static void main(String[] args) {
+		ListNode n1 = new ListNode(0);
+		ListNode n2 = new ListNode(2);
+		ListNode n3 = new ListNode(5);
+
+		n1.next = n2;
+		n2.next = n3;
+
+		ListNode[] lists = new ListNode[] { n1 };
+
+		MergekSortedLists test = new MergekSortedLists();
+		test.mergeKLists2(lists);
+	}
 }
