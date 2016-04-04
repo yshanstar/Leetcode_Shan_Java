@@ -8,68 +8,6 @@ import java.util.List;
 import java.util.Stack;
 
 public class TwoSumInBST {
-	class BSTIterator implements Iterator<TreeNode> {
-		Stack<TreeNode> stack;
-		boolean isLeftToRight;
-
-		public BSTIterator(TreeNode node, boolean isLeftToRight) {
-			this.isLeftToRight = isLeftToRight;
-
-			stack = new Stack<TreeNode>();
-
-			TreeNode cur = node;
-			if (isLeftToRight) {
-				while (cur != null) {
-					stack.push(cur);
-					cur = cur.left;
-				}
-			} else {
-				while (cur != null) {
-					stack.push(cur);
-					cur = cur.right;
-				}
-			}
-		}
-
-		@Override
-		public boolean hasNext() {
-			return !stack.isEmpty();
-		}
-
-		@Override
-		public TreeNode next() {
-			if (hasNext()) {
-				TreeNode node = stack.pop();
-
-				// if it is left to right iterator
-				if (isLeftToRight) {
-					if (node.right != null) {
-						TreeNode tmp = node.right;
-						while (tmp != null) {
-							stack.push(tmp);
-							tmp = tmp.left;
-						}
-					}
-				}
-				// if it is right to left iterator
-				else {
-					if (node.left != null) {
-						TreeNode tmp = node.left;
-						while (tmp != null) {
-							stack.push(tmp);
-							tmp = tmp.right;
-						}
-					}
-				}
-
-				return node;
-			} else {
-				return null;
-			}
-		}
-
-	}
-
 	class NodePair {
 		TreeNode n1;
 		TreeNode n2;
@@ -132,6 +70,16 @@ public class TwoSumInBST {
 		return sb.toString();
 	}
 
+	public static String goThroughBSTIterator(BSTIterator iter) {
+		StringBuilder sb = new StringBuilder();
+
+		while (iter.hasNext()) {
+			sb.append(iter.next().val + ",");
+		}
+
+		return sb.append("\n").toString();
+	}
+
 	public static void main(String[] args) {
 		TwoSumInBST t = new TwoSumInBST();
 
@@ -153,5 +101,72 @@ public class TwoSumInBST {
 		System.out.print(printPairNode(t.twoSumInBST(n1, 12)));
 		System.out.print(printPairNode(t.twoSumInBST(n1, 16)));
 		System.out.print(printPairNode(t.twoSumInBST(n1, 6)));
+
+		BSTIterator leftToRight = new BSTIterator(n1, true);
+		BSTIterator rightToLeft = new BSTIterator(n1, false);
+
+		System.out.print(goThroughBSTIterator(leftToRight));
+		System.out.print(goThroughBSTIterator(rightToLeft));
+	}
+}
+
+class BSTIterator implements Iterator<TreeNode> {
+	Stack<TreeNode> stack;
+	boolean isLeftToRight;
+
+	public BSTIterator(TreeNode node, boolean isLeftToRight) {
+		this.isLeftToRight = isLeftToRight;
+
+		stack = new Stack<TreeNode>();
+
+		TreeNode cur = node;
+		if (isLeftToRight) {
+			while (cur != null) {
+				stack.push(cur);
+				cur = cur.left;
+			}
+		} else {
+			while (cur != null) {
+				stack.push(cur);
+				cur = cur.right;
+			}
+		}
+	}
+
+	@Override
+	public boolean hasNext() {
+		return !stack.isEmpty();
+	}
+
+	@Override
+	public TreeNode next() {
+		if (hasNext()) {
+			TreeNode node = stack.pop();
+
+			// if it is left to right iterator
+			if (isLeftToRight) {
+				if (node.right != null) {
+					TreeNode tmp = node.right;
+					while (tmp != null) {
+						stack.push(tmp);
+						tmp = tmp.left;
+					}
+				}
+			}
+			// if it is right to left iterator
+			else {
+				if (node.left != null) {
+					TreeNode tmp = node.left;
+					while (tmp != null) {
+						stack.push(tmp);
+						tmp = tmp.right;
+					}
+				}
+			}
+
+			return node;
+		} else {
+			return null;
+		}
 	}
 }
