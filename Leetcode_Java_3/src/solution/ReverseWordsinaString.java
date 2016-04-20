@@ -46,6 +46,19 @@ public class ReverseWordsinaString {
 
 		return new String(strArray);
 	}
+	
+	public String reverseWords3(String s) {
+		StringBuilder res = new StringBuilder();
+		for (int start = s.length() - 1; start >= 0; start--) {
+			if (s.charAt(start) == ' ')
+				continue;
+			int end = start;
+			while (start >= 0 && s.charAt(start) != ' ')
+				start--;
+			res.append(s.substring(start + 1, end + 1)).append(" ");
+		}
+		return res.toString().trim();
+	}
 
 	private void reverse(char[] array, int left, int right) {
 		while (left < right) {
@@ -55,5 +68,8 @@ public class ReverseWordsinaString {
 			left++;
 			right--;
 		}
+	}
+	
+	public static void main(String[] args){
 	}
 }
