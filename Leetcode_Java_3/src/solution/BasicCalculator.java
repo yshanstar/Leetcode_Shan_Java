@@ -5,14 +5,14 @@ import java.util.Stack;
 /*
  * Implement a basic calculator to evaluate a simple expression string.
 
-The expression string may contain open ( and closing parentheses ), the plus + or minus sign -, non-negative integers and empty spaces .
+ The expression string may contain open ( and closing parentheses ), the plus + or minus sign -, non-negative integers and empty spaces .
 
-You may assume that the given expression is always valid.
+ You may assume that the given expression is always valid.
 
-Some examples:
-"1 + 1" = 2
-" 2-1 + 2 " = 3
-"(1+(4+5+2)-3)+(6+8)" = 23
+ Some examples:
+ "1 + 1" = 2
+ " 2-1 + 2 " = 3
+ "(1+(4+5+2)-3)+(6+8)" = 23
  */
 public class BasicCalculator {
 	public int calculate(String s) {
@@ -20,7 +20,7 @@ public class BasicCalculator {
 			return 0;
 		}
 
-		int res = 0, val = 0, sign = 1;
+		int val = 0, sign = 1;
 		Stack<Integer> stack = new Stack<Integer>();
 
 		s.trim();
