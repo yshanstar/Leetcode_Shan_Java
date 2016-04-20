@@ -1,7 +1,7 @@
 package solution;
 
 public class ValidNumber {
-	public boolean isNumber(String s) {
+	public static boolean isNumber(String s) {
 		if (s == null) {
 			return false;
 		}
@@ -68,5 +68,9 @@ public class ValidNumber {
 		}
 
 		return hasNum;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(isNumber("e9"));
 	}
 }
