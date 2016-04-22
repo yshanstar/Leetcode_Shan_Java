@@ -23,16 +23,20 @@ public class SubSetSum {
 	}
 
 	private void helper(int[] nums, int target, List<Integer> tmpRes, List<List<Integer>> res, int idx) {
-		if (target != 0 && idx == nums.length) {
-			return;
-		}
 
 		if (target == 0) {
 			res.add(new ArrayList<Integer>(tmpRes));
 			return;
 		}
+		
+		if (target < 0 || idx > nums.length) {
+			return;
+		}
 
 		for (int i = idx; i < nums.length; i++) {
+			if (i > idx && nums[i] == nums[i - 1])
+				continue;
+			
 			tmpRes.add(nums[i]);
 			helper(nums, target - nums[i], tmpRes, res, i + 1);
 			tmpRes.remove(tmpRes.size() - 1);
