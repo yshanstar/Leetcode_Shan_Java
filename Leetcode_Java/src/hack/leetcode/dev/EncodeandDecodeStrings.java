@@ -54,8 +54,7 @@ public class EncodeandDecodeStrings {
 
 	public static void main(String[] args) {
 		EncodeandDecodeStrings test = new EncodeandDecodeStrings();
-		List<String> testStrs = new ArrayList<String>() {
-		};
+		List<String> testStrs = new ArrayList<String>();
 		testStrs.add("aaab//");
 		testStrs.add("aaab///");
 
