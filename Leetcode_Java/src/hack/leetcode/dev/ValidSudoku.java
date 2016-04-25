@@ -16,7 +16,7 @@ public class ValidSudoku {
 			for (int j = 0; j < board[i].length; j++) {
 				if (board[i][j] != '.' && hs.contains(board[i][j])) {
 					return false;
-				} 
+				}
 				hs.add(board[i][j]);
 			}
 		}
@@ -44,7 +44,7 @@ public class ValidSudoku {
 				for (int j = col_offset; j < col_offset + 3; j++) {
 					if (board[i][j] != '.' && hs.contains(board[i][j])) {
 						return false;
-					} 
+					}
 					hs.add(board[i][j]);
 				}
 			}
