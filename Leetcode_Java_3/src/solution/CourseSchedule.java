@@ -27,7 +27,6 @@ public class CourseSchedule {
 			return true;
 		}
 
-		int length = prerequisites.length;
 		int[] counter = new int[numCourses];
 
 		for (int[] prerequisite : prerequisites) {
