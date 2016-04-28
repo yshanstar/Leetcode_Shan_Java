@@ -1,4 +1,4 @@
-package hack.leetcode.dev;
+package solution;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -25,29 +25,30 @@ import java.util.Queue;
  It should return [1,4,8,2,5,9,3,6,7].
  */
 public class ZigzagIterator {
-	Queue<Iterator<Integer>> iterators;
+	Queue<Iterator<Integer>> iteratorQueue;
 
 	public ZigzagIterator(List<Integer> v1, List<Integer> v2) {
-		iterators = new LinkedList<Iterator<Integer>>();
+		iteratorQueue = new LinkedList<Iterator<Integer>>();
 		if (!v1.isEmpty()) {
-			iterators.offer(v1.iterator());
-		}
-		if (!v2.isEmpty()) {
-			iterators.offer(v2.iterator());
+			iteratorQueue.offer(v1.iterator());
 		}
 
+		if (!v2.isEmpty()) {
+			iteratorQueue.offer(v2.iterator());
+		}
 	}
 
 	public int next() {
-		Iterator<Integer> tmp = iterators.poll();
+		Iterator<Integer> tmp = iteratorQueue.poll();
 		int res = tmp.next();
 		if (tmp.hasNext()) {
-			iterators.offer(tmp);
+			iteratorQueue.offer(tmp);
 		}
+
 		return res;
 	}
 
 	public boolean hasNext() {
-		return !iterators.isEmpty();
+		return !iteratorQueue.isEmpty();
 	}
 }
