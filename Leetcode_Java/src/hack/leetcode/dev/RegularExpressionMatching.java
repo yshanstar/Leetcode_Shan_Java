@@ -8,13 +8,13 @@ package hack.leetcode.dev;
  * bool isMatch(const char *s, const char *p)
 
  Some examples:
- isMatch("aa","a") â†? false
- isMatch("aa","aa") â†? true
- isMatch("aaa","aa") â†? false
- isMatch("aa", "a*") â†? true
- isMatch("aa", ".*") â†? true
- isMatch("ab", ".*") â†? true
- isMatch("aab", "c*a*b") â†? true
+ isMatch("aa","a") -> false
+ isMatch("aa","aa") -> true
+ isMatch("aaa","aa") -> false
+ isMatch("aa", "a*") -> true
+ isMatch("aa", ".*") -> true
+ isMatch("ab", ".*") -> true
+ isMatch("aab", "c*a*b") -> true
  */
 public class RegularExpressionMatching {
 	public static boolean isMatch(String s, String p) {
