@@ -42,7 +42,7 @@ public class CoolDown {
 				idx++;
 			}
 			res.add(String.valueOf(tasks[i]));
-			maps.put(tasks[i], i);
+			maps.put(tasks[i], idx);
 			idx++;
 		}
 
@@ -51,12 +51,20 @@ public class CoolDown {
 
 	public static void main(String[] args) {
 		List<String> res = Printer(new int[] { 1, 1, 2, 1 }, 2);
+		printList(res);
 
+		res = Printer(new int[] { 1, 2, 3, 1, 2, 3 }, 3);
+		printList(res);
+
+		res = Printer(new int[] { 1, 2, 3, 4, 5, 6, 2, 4, 6, 1, 2, 4 }, 6);
+		printList(res);
+	}
+
+	private static void printList(List<String> res) {
 		for (String s : res) {
 			System.out.print(s);
 		}
 
 		System.out.println();
-
 	}
 }
