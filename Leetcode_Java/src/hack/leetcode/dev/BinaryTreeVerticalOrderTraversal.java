@@ -1,4 +1,4 @@
-package solution;
+package hack.leetcode.dev;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-import util.TreeNode;
+import hack.leetcode.ulti.TreeNode;
 
 /*
  * Given a binary tree, return the vertical order traversal of its nodes' values. (ie, from top to bottom, column by column).
@@ -70,51 +70,48 @@ return its vertical order traversal as:
 public class BinaryTreeVerticalOrderTraversal {
 	public List<List<Integer>> verticalOrder(TreeNode root) {
 		List<List<Integer>> res = new ArrayList<List<Integer>>();
-
 		if (root == null) {
 			return res;
 		}
 
-		Map<Integer, List<Integer>> map = new HashMap<Integer, List<Integer>>();
-		Queue<TreeNode> nodeQueue = new LinkedList<TreeNode>();
-		Queue<Integer> colQueue = new LinkedList<Integer>();
+		Map<Integer, List<Integer>> maps = new HashMap<Integer, List<Integer>>();
+		Queue<TreeNode> nodes = new LinkedList<TreeNode>();
+		Queue<Integer> idxList = new LinkedList<Integer>();
+		nodes.offer(root);
+		idxList.offer(0);
 
-		nodeQueue.offer(root);
-		colQueue.offer(0);
-		int minCol = 0;
-		int maxCol = 0;
+		int min = 0;
+		int max = 0;
 
-		while (!nodeQueue.isEmpty()) {
-			TreeNode node = nodeQueue.poll();
-			int col = colQueue.poll();
+		while (!nodes.isEmpty()) {
+			TreeNode node = nodes.poll();
+			int idx = idxList.poll();
 
-			if (!map.containsKey(col)) {
-				map.put(col, new ArrayList<Integer>());
+			min = Math.min(min, idx);
+			max = Math.max(max, idx);
+
+			if (maps.containsKey(idx)) {
+				maps.get(idx).add(node.val);
+			} else {
+				List<Integer> tmp = new ArrayList<Integer>();
+				tmp.add(node.val);
+				maps.put(idx, tmp);
 			}
 
-			map.get(col).add(node.val);
-
 			if (node.left != null) {
-				nodeQueue.offer(node.left);
-				colQueue.offer(col - 1);
-
-				if (col - 1 < minCol) {
-					minCol = col - 1;
-				}
+				nodes.offer(node.left);
+				idxList.offer(idx - 1);
 			}
 
 			if (node.right != null) {
-				nodeQueue.offer(node.right);
-				colQueue.offer(col + 1);
-
-				if (col + 1 > maxCol) {
-					maxCol = col + 1;
-				}
+				nodes.offer(node.right);
+				idxList.offer(idx + 1);
 			}
 		}
 
-		for (int i = minCol; i <= maxCol; i++) {
-			res.add(map.get(i));
+		while (min <= max) {
+			res.add(maps.get(min));
+			min++;
 		}
 
 		return res;
