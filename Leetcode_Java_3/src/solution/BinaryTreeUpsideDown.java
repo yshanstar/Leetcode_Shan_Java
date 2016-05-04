@@ -15,7 +15,7 @@ Given a binary tree {1,2,3,4,5},
 return the root of the binary tree [4,5,2,#,#,3,1].
    4
   / \
- 5   2
+ 5   2 
     / \
    3   1  
  */
