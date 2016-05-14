@@ -1,5 +1,6 @@
 package solution;
 
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
@@ -19,8 +20,7 @@ import java.util.Set;
  return its length 5.
  */
 public class WordLadder {
-	public int ladderLength(String beginWord, String endWord,
-			Set<String> wordList) {
+	public static int ladderLength(String beginWord, String endWord, Set<String> wordList) {
 		if (beginWord == null || endWord == null) {
 			return 0;
 		}
@@ -57,7 +57,7 @@ public class WordLadder {
 		return 0;
 	}
 
-	private boolean oneStep(String s1, String s2) {
+	private static boolean oneStep(String s1, String s2) {
 		int diff = 0;
 		for (int i = 0; i < s1.length(); i++)
 			if (s1.charAt(i) != s2.charAt(i)) {
@@ -67,5 +67,12 @@ public class WordLadder {
 					diff++;
 			}
 		return true;
+	}
+
+	public static void main(String[] args) {
+		Set<String> dict = new HashSet<String>();
+		dict.add("a");
+		dict.add("ab");
+		System.out.println(ladderLength("a", "ab", dict));
 	}
 }
