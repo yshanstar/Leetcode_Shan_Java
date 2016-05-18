@@ -7,6 +7,8 @@ package solution;
 
  Note:
  You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
+ 
+ https://leetcode.com/discuss/91739/my-explanation-for-o-n-solution
  */
 public class BestTimeToBuyAndSellStockIII {
 	public int maxProfit(int[] prices) {
