@@ -5,6 +5,10 @@ package hack.leetcode.dev;
  */
 
 public class PowerofTwo {
+	public boolean isPowerOfTwo2(int n) {
+		return (Math.log10(n) / Math.log10(2) % 1 == 0);
+	}
+
 	public boolean isPowerOfTwo(int n) {
 		if (n <= 0) {
 			return false;
