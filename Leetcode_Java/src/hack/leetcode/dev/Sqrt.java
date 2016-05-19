@@ -5,6 +5,21 @@ package hack.leetcode.dev;
  Compute and return the square root of x.
  */
 public class Sqrt {
+	public int mySqrtNewton(int x) {
+		if (x <= 0) {
+			return 0;
+		} else if (x == 1) {
+			return 1;
+		}
+
+		long res = x;
+		while (res * res > x) {
+			res = (res + (x / res)) / 2;
+		}
+
+		return (int) res;
+	}
+
 	public int mySqrt(int x) {
 		if (x <= 0) {
 			return 0;
