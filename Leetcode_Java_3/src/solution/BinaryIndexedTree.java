@@ -1,7 +1,5 @@
 package solution;
 
-import java.util.Arrays;
-
 import util.BITreeNode;
 
 /*
@@ -84,8 +82,7 @@ public class BinaryIndexedTree {
 		for (int i = 0; i < nums.length; i++) {
 			System.out.print(Bit.getSum(BITree, i) + "\t");
 		}
-		
-		
+
 		int[] nums2 = new int[] { -2, 5, -1 };
 		BITree = Bit.buildBITree(nums2);
 		for (BITreeNode node : BITree) {

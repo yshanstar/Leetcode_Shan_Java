@@ -13,6 +13,14 @@ Return 3.
 The three ranges are : [0, 0], [2, 2], [0, 2] and their respective sums are: -2, -1, 2.
 
 https://leetcode.com/discuss/79907/summary-divide-conquer-based-binary-indexed-based-solutions
+
+http://huntzhan.org/leetcode-count-of-range-sum/
+
+https://leetcode.com/discuss/79154/short-%26-simple-o-n-log-n
+
+https://leetcode.com/discuss/79083/share-my-solution
+
+https://leetcode.com/discuss/79903/java-bst-solution-averagely-o-nlogn
  */
 public class CountOfRangeSum {
 //	public int countRangeSum(int[] nums, int lower, int upper) {
