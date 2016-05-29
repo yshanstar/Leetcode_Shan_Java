@@ -1,5 +1,7 @@
 package solution;
 
+import java.util.Arrays;
+
 /*
  * According to the Wikipedia's article: "The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970."
 
@@ -16,6 +18,56 @@ package solution;
  In this question, we represent the board using a 2D array. In principle, the board is infinite, which would cause problems when the active area encroaches the border of the array. How would you address these problems?
  */
 public class GameOfLife {
+	public void gameOfLife2(boolean[][] board) {
+		if (board == null || board.length == 0) {
+			return;
+		}
+
+		int m = board.length;
+		int n = board[0].length;
+
+		boolean[][] copy = new boolean[m][n];
+
+		for (int i = 0; i < m; i++) {
+			copy[i] = board[i].clone();
+		}
+
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				boolean cur = board[i][j];
+				int neighbor = countNeighbor(board, i, j);
+
+				if (cur && neighbor < 2) {
+					copy[i][j] = false;
+				} else if (cur && neighbor > 3) {
+					copy[i][j] = true;
+				} else if (!cur && neighbor == 3) {
+					copy[i][j] = true;
+				}
+			}
+		}
+
+		for (int i = 0; i < m; i++) {
+			board[i] = copy[i].clone();
+		}
+	}
+
+	private int countNeighbor(boolean[][] board, int i, int j) {
+		int liveNeighbor = count(board, i - 1, j) + count(board, i + 1, j) + count(board, i - 1, j - 1) + count(board, i - 1, j + 1) + count(board, i, j - 1) + count(board, i, j + 1)
+				+ count(board, i + 1, j - 1) + count(board, i + 1, j + 1);
+		return liveNeighbor;
+	}
+
+	private int count(boolean[][] board, int i, int j) {
+		if (i < 0 || i >= board.length || j < 0 || j >= board[0].length) {
+			return 0;
+		}
+
+		boolean cur = board[i][j];
+
+		return (cur) ? 1 : 0;
+	}
+
 	public void gameOfLife(int[][] board) {
 		if (board == null || board.length == 0) {
 			return;
@@ -52,9 +104,7 @@ public class GameOfLife {
 	}
 
 	private int countLiveNeighbor(int[][] board, int i, int j) {
-		int liveNeighbor = count(board, i - 1, j) + count(board, i + 1, j)
-				+ count(board, i - 1, j - 1) + count(board, i - 1, j + 1)
-				+ count(board, i, j - 1) + count(board, i, j + 1)
+		int liveNeighbor = count(board, i - 1, j) + count(board, i + 1, j) + count(board, i - 1, j - 1) + count(board, i - 1, j + 1) + count(board, i, j - 1) + count(board, i, j + 1)
 				+ count(board, i + 1, j - 1) + count(board, i + 1, j + 1);
 		return liveNeighbor;
 	}
@@ -79,5 +129,17 @@ public class GameOfLife {
 		GameOfLife test = new GameOfLife();
 		int[][] board = new int[][] { { 0 } };
 		test.gameOfLife(board);
+
+		boolean[][] board2 = new boolean[][] { { false, true, false }, { false, true, false }, { false, true, false } };
+		int i = 0;
+		while (i < 3) {
+			test.gameOfLife2(board2);
+			for (boolean[] row : board2) {
+				System.out.println(Arrays.toString(row));
+			}
+			i++;
+			System.out.println("end");
+		}
+
 	}
 }
