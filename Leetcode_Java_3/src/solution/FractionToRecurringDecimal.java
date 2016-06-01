@@ -6,16 +6,16 @@ import java.util.Map;
 /*
  * Given two integers representing the numerator and denominator of a fraction, return the fraction in string format.
 
-If the fractional part is repeating, enclose the repeating part in parentheses.
+ If the fractional part is repeating, enclose the repeating part in parentheses.
 
-For example,
+ For example,
 
-Given numerator = 1, denominator = 2, return "0.5".
-Given numerator = 2, denominator = 1, return "2".
-Given numerator = 2, denominator = 3, return "0.(6)".
+ Given numerator = 1, denominator = 2, return "0.5".
+ Given numerator = 2, denominator = 1, return "2".
+ Given numerator = 2, denominator = 3, return "0.(6)".
  */
 public class FractionToRecurringDecimal {
-	public String fractionToDecimal(int numerator, int denominator) {
+	public static String fractionToDecimal(int numerator, int denominator) {
 		if (denominator == 0) {
 			return "";
 		}
@@ -32,8 +32,11 @@ public class FractionToRecurringDecimal {
 			sb.append("-");
 		}
 
-		long num = Math.abs(numerator);
-		long den = Math.abs(denominator);
+		long num = numerator;
+		long den = denominator;
+
+		num = Math.abs(num);
+		den = Math.abs(den);
 
 		long n = num / den;
 		sb.append(n);
@@ -61,5 +64,9 @@ public class FractionToRecurringDecimal {
 		}
 
 		return sb.toString();
+	}
+
+	public static void main(String[] args) {
+		System.out.println(fractionToDecimal(-1, Integer.MIN_VALUE));
 	}
 }
