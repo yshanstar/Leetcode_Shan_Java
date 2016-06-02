@@ -26,6 +26,33 @@ import java.util.List;
  [[1,2,6], [1,3,5], [2,3,4]]
  */
 public class CombinationSumIII {
+	public List<List<Integer>> combinationSum3II(int k, int n) {
+		List<List<Integer>> res = new ArrayList<List<Integer>>();
+
+		if (k <= 0) {
+			return res;
+		}
+
+		helper2(res, k, n, 1, new ArrayList<Integer>());
+
+		return res;
+	}
+
+	private void helper2(List<List<Integer>> res, int k, int target, int start, List<Integer> tmpList) {
+		if (tmpList.size() > k) {
+			return;
+		} else if (tmpList.size() == k && target == 0) {
+			res.add(new ArrayList<Integer>(tmpList));
+			return;
+		} else {
+			for (int i = start; i <= 9; i++) {
+				tmpList.add(i);
+				helper2(res, k, target - i, i + 1, tmpList);
+				tmpList.remove(tmpList.size() - 1);
+			}
+		}
+	}
+
 	public List<List<Integer>> combinationSum3(int k, int n) {
 		List<List<Integer>> res = new ArrayList<List<Integer>>();
 
