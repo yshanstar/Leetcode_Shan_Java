@@ -16,6 +16,8 @@ import java.util.Set;
 
  Return:
  ["AAAAACCCCC", "CCCCCAAAAA"].
+
+ https://leetcode.com/discuss/24595/short-java-rolling-hash-solution
  */
 public class RepeatedDNASequences {
 	public List<String> findRepeatedDnaSequences(String s) {
