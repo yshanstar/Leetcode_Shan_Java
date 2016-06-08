@@ -2,6 +2,7 @@ package hack.leetcode.dev;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /*
  * Given a collection of numbers that might contain duplicates, return all possible unique permutations.
@@ -10,32 +11,47 @@ import java.util.Arrays;
  * [1,1,2], [1,2,1], and [2,1,1].
  */
 public class PermutationsII {
-	public ArrayList<ArrayList<Integer>> permuteUnique(int[] num) {
-		ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
-		Arrays.sort(num);
+	public List<List<Integer>> permuteUnique(int[] nums) {
+		List<List<Integer>> permutations = new ArrayList<List<Integer>>();
 
-		ArrayList<Integer> tmp = new ArrayList<Integer>();
-		int n = num.length;
-		boolean[] visited = new boolean[n];
-		helper(num, visited, 0, res, tmp);
-		return res;
+		if (nums == null || nums.length == 0) {
+			return permutations;
+		}
+
+		Arrays.sort(nums);
+
+		boolean[] used = new boolean[nums.length];
+
+		helper(nums, used, permutations, new ArrayList<Integer>());
+
+		return permutations;
 	}
 
-	private void helper(int[] num, boolean[] visited, int idx, ArrayList<ArrayList<Integer>> res, ArrayList<Integer> tmp) {
-		if (tmp.size() == num.length) {
-			res.add(new ArrayList<Integer>(tmp));
+	private void helper(int[] nums, boolean[] used, List<List<Integer>> permutations, List<Integer> permutation) {
+		if (permutation.size() == nums.length) {
+			permutations.add(new ArrayList<Integer>(permutation));
 			return;
 		}
-		for (int i = 0; i < num.length; i++) {
-			if (!visited[i]) {
-				tmp.add(num[i]);
-				visited[i] = true;
-				helper(num, visited, idx + 1, res, tmp);
-				visited[i] = false;
-				tmp.remove(tmp.size() - 1);
-				while (i + 1 < num.length && num[i + 1] == num[i])
+
+		for (int i = 0; i < nums.length; i++) {
+			if (!used[i]) {
+				permutation.add(nums[i]);
+				used[i] = true;
+				helper(nums, used, permutations, permutation);
+				used[i] = false;
+				permutation.remove(permutation.size() - 1);
+
+				while (i + 1 < nums.length && nums[i + 1] == nums[i]) {
 					i++;
+				}
 			}
 		}
+	}
+
+	public static void main(String[] args) {
+		int[] nums = new int[] { 2, 1, 1 };
+
+		PermutationsII test = new PermutationsII();
+		test.permuteUnique(nums);
 	}
 }
