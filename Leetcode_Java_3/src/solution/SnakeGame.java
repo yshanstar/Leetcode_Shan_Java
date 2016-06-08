@@ -3,8 +3,6 @@ package solution;
 import java.util.Deque;
 import java.util.LinkedList;
 
-import javax.print.attribute.standard.MediaSize.NA;
-
 /*
  * Design a Snake game that is played on a device with screen size = width x height. Play the game online if you are not familiar with the game.
 

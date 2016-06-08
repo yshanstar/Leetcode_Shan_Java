@@ -15,6 +15,54 @@ If there are multiple such windows, you are guaranteed that there will always be
  */
 public class MinimumWindowSubstring {
 	public static String minWindow(String s, String t) {
+		if (s == null || s.isEmpty() || t == null || t.isEmpty()) {
+			return s;
+		}
+
+		String res = "";
+
+		int[] needToFind = new int[256];
+		int[] hasFound = new int[256];
+
+		for (char c : t.toCharArray()) {
+			needToFind[c]++;
+		}
+
+		int start = 0;
+		int end = 0;
+
+		int count = 0;
+		for (end = 0; end < s.length(); end++) {
+			char c = s.charAt(end);
+			if (needToFind[c] == 0) {
+				continue;
+			}
+
+			hasFound[c]++;
+			if (hasFound[c] <= needToFind[c]) {
+				count++;
+			}
+
+			if (count == t.length()) {
+				char startC = s.charAt(start);
+				while (needToFind[startC] == 0 || hasFound[startC] > needToFind[startC]) {
+					if (hasFound[startC] > needToFind[startC]) {
+						hasFound[startC]--;
+					}
+					startC = s.charAt(++start);
+				}
+
+				int windowLen = end - start + 1;
+				if (res.isEmpty() || windowLen < res.length()) {
+					res = s.substring(start, end + 1);
+				}
+			}
+		}
+
+		return res;
+	}
+
+	public static String minWindow2(String s, String t) {
 		int sLen = s.length();
 		int tLen = t.length();
 
@@ -48,7 +96,7 @@ public class MinimumWindowSubstring {
 					start++;
 					startC = s.charAt(start);
 				}
-				
+
 				int windowLen = end - start + 1;
 				if (windowLen < res) {
 					minStart = start;
@@ -62,6 +110,6 @@ public class MinimumWindowSubstring {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(minWindow("ADOBECODEBANC", "ABC"));
+		System.out.println(minWindow("bccabccbbaaacbcbc", "aac"));
 	}
 }
