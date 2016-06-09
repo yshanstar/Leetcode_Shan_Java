@@ -10,9 +10,9 @@ public class IdAllocator {
 	private static Queue<Integer> freeId;
 
 	public IdAllocator(int max) {
-		this.x = 0;
-		this.max = max;
-		this.freeId = new LinkedList<Integer>();
+		IdAllocator.x = 0;
+		IdAllocator.max = max;
+		IdAllocator.freeId = new LinkedList<Integer>();
 	}
 
 	public static int alloc() {
@@ -48,12 +48,12 @@ public class IdAllocator {
 		IdAllocator idAllocator = new IdAllocator(Integer.MAX_VALUE);
 		Random rm = new Random();
 		for (int i = 0; i < 15; i++) {
-			System.out.println("Assign Id : " + idAllocator.alloc());
+			System.out.println("Assign Id : " + IdAllocator.alloc());
 
 			if (i > 0 && (i % 5 == 0 || i % 3 == 0)) {
 				int id = rm.nextInt(i);
 				System.out.println("Free Id : " + id);
-				idAllocator.free(id);
+				IdAllocator.free(id);
 			}
 		}
 	}
