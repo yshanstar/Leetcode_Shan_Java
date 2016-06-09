@@ -12,16 +12,16 @@ public class BitOperationTest {
 		for (int i = 0; i < 1000; i++) {
 			set.set(i);
 		}
-		System.out.print(set.cardinality());
-
+		System.out.println(set.cardinality());
+		System.out.println(set);
+		
 		for (int i = 0; i < 1000; i++) {
 			if (i % 5 != 0) {
 				set.set(i, false);
 			}
 		}
-
-		System.out.print(set);
-		System.out.print(set.cardinality());
+		System.out.println(set);
+		System.out.println(set.cardinality());
 	}
 
 	public static long convertIPtoLong(String Ip) {

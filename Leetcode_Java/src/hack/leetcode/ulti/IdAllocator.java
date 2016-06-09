@@ -37,7 +37,7 @@ public class IdAllocator {
 
 		if (freeId.contains(id)) {
 			System.out.println("id: " + id + " has not been free before");
-			return false;
+			return true;
 		}
 
 		freeId.offer(id);
