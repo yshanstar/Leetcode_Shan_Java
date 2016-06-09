@@ -47,8 +47,7 @@ public class RangeSumQueryMutable {
 			} else if (start > mid) {
 				return sumRange(root.right, start, end);
 			} else {
-				return sumRange(root.left, start, mid)
-						+ sumRange(root.right, mid + 1, end);
+				return sumRange(root.left, start, mid) + sumRange(root.right, mid + 1, end);
 			}
 		}
 	}
@@ -67,8 +66,7 @@ public class RangeSumQueryMutable {
 			} else {
 				update(root.right, i, val);
 			}
-			root.sum = ((root.left != null) ? root.left.sum : 0)
-					+ ((root.right != null) ? root.right.sum : 0);
+			root.sum = ((root.left != null) ? root.left.sum : 0) + ((root.right != null) ? root.right.sum : 0);
 		}
 	}
 
