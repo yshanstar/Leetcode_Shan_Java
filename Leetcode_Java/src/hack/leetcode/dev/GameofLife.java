@@ -17,6 +17,41 @@ package hack.leetcode.dev;
  */
 public class GameofLife {
 	public void gameOfLife(int[][] board) {
+		int[] lookupTable = GetTable();
+		int m = board.length, n = board[0].length;
+		if (n == 0)
+			return;
+		int[][] buffer = new int[m][n];
+		for (int i = 0; i < m; i++) {
+			int environment = (i - 1 >= 0 && board[i - 1][0] == 1 ? 4 : 0) + (board[i][0] == 1 ? 2 : 0)
+					+ (i + 1 < m && board[i + 1][0] == 1 ? 1 : 0);
+			for (int j = 0; j < n; j++) {
+				environment = (environment % 64) * 8 + (i - 1 >= 0 && j + 1 < n && board[i - 1][j + 1] == 1 ? 4 : 0)
+						+ (j + 1 < n && board[i][j + 1] == 1 ? 2 : 0)
+						+ (i + 1 < m && j + 1 < n && board[i + 1][j + 1] == 1 ? 1 : 0);
+				buffer[i][j] = lookupTable[environment];
+			}
+		}
+		for (int i = 0; i < m; i++) {
+			for (int j = 0; j < n; j++) {
+				board[i][j] = buffer[i][j];
+			}
+		}
+	}
+
+	public static int[] GetTable() {
+		int[] table = new int[512];
+		for (int i = 0; i < 512; i++) {
+			int lives = Integer.bitCount(i);
+			if (lives == 3 || (lives - ((i & 16) > 0 ? 1 : 0) == 3)) {
+				table[i] = 1;
+			}
+		}
+
+		return table;
+	}
+
+	public void gameOfLife2(int[][] board) {
 		if (board == null || board.length == 0) {
 			return;
 		}
@@ -50,9 +85,8 @@ public class GameofLife {
 	}
 
 	private int getNeighbor(int[][] board, int i, int j) {
-		int neighbor = count(board, i + 1, j) + count(board, i - 1, j)
-				+ count(board, i + 1, j + 1) + count(board, i - 1, j + 1)
-				+ count(board, i + 1, j - 1) + count(board, i - 1, j - 1)
+		int neighbor = count(board, i + 1, j) + count(board, i - 1, j) + count(board, i + 1, j + 1)
+				+ count(board, i - 1, j + 1) + count(board, i + 1, j - 1) + count(board, i - 1, j - 1)
 				+ count(board, i, j + 1) + count(board, i, j - 1);
 		return neighbor;
 	}
