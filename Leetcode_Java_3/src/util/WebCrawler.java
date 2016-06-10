@@ -68,6 +68,14 @@ class MyCrawler implements Runnable {
 				if (!processed) {
 					List<String> taskList = crawl(task);
 
+					// wait for 1 second for task to crawl the webpage to avoid
+					// bind
+					try {
+						Thread.sleep(1000);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+
 					if (taskList.size() != 0) {
 						synchronized (taskTable) {
 							taskTable.addAll(taskList);
