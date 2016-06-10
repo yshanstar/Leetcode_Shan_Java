@@ -11,11 +11,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class Crawler {
+public class SimpleCrawler {
 	private Queue<String> urlsNeedToParse;
 	private Set<String> urlsParsed;
 
-	public Crawler(String rootUrl) {
+	public SimpleCrawler(String rootUrl) {
 		this.urlsNeedToParse = new LinkedList<String>();
 		this.urlsParsed = new HashSet<String>();
 		init(rootUrl);
@@ -54,7 +54,7 @@ public class Crawler {
 	}
 
 	public static void main(String[] args) {
-		Crawler crawler = new Crawler("http://www.mit.edu/");
+		SimpleCrawler crawler = new SimpleCrawler("http://www.mit.edu/");
 		crawler.start();
 	}
 }
