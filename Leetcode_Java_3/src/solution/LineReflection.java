@@ -1,10 +1,7 @@
 package solution;
 
-import java.awt.Point;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashSet;
-import java.util.Set;
 
 /*
  * Given n points on a 2D plane, find if there is such a line parallel to y-axis that reflect the given set of points.
