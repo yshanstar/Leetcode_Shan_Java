@@ -91,6 +91,6 @@ public class RegularExpressionMatching {
 	}
 	
 	public static void main(String[] args){
-		isMatch("aab", "c*a*b");
+		isMatch("aa", "aa");
 	}
 }
