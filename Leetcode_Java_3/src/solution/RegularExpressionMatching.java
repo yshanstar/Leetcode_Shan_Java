@@ -58,7 +58,7 @@ public class RegularExpressionMatching {
 			                           or dp[i][j] = dp[i][j-1]   // in this case, a* counts as single a
 			                           or dp[i][j] = dp[i][j-2]   // in this case, a* counts as empty
 	 */
-	public boolean isMatchDP(String s, String p) {
+	public static boolean isMatchDP(String s, String p) {
 		if (s == null || p == null) {
 			return false;
 		}
@@ -91,6 +91,6 @@ public class RegularExpressionMatching {
 	}
 	
 	public static void main(String[] args){
-		isMatch("aa", "aa");
+		isMatchDP("aa", "*a");
 	}
 }
