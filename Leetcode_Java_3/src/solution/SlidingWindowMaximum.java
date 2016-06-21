@@ -22,7 +22,7 @@ import java.util.List;
  Therefore, return the max sliding window as [3,3,5,5,6,7].
  */
 public class SlidingWindowMaximum {
-	public int[] maxSlidingWindow(int[] nums, int k) {
+	public static int[] maxSlidingWindow(int[] nums, int k) {
 		List<Integer> res = new ArrayList<Integer>();
 
 		if (nums == null || nums.length == 0 || k < 0) {
@@ -61,5 +61,10 @@ public class SlidingWindowMaximum {
 		}
 
 		return finalRes;
+	}
+
+	public static void main(String[] args) {
+		int[] nums = new int[] { 1, 3, -1, -3, 5, 3, 6, 7 };
+		maxSlidingWindow(nums, 3);
 	}
 }
