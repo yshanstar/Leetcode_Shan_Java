@@ -36,8 +36,8 @@ public class HitsCounter {
 		int gap = Math.min(SIZE, (int) (currentTime - this.lastTime));
 		for (int i = 0; i < gap; i++) {
 			this.lastPos = (this.lastPos + 1) % SIZE;
-			this.SUM -= buckets[i];
-			buckets[i] = 0;
+			this.SUM -= buckets[this.lastPos];
+			buckets[this.lastPos] = 0;
 		}
 		this.lastTime = currentTime;
 	}
