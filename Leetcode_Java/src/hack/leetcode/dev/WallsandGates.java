@@ -1,8 +1,5 @@
 package hack.leetcode.dev;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 /*
  * You are given a m x n 2D grid initialized with these three possible values.
 
@@ -36,8 +33,7 @@ public class WallsandGates {
 	}
 
 	private void helper(int[][] rooms, int i, int j, int dist) {
-		if (i < 0 || i >= rooms.length || j < 0 || j >= rooms[0].length
-				|| rooms[i][j] < dist) {
+		if (i < 0 || i >= rooms.length || j < 0 || j >= rooms[0].length || rooms[i][j] < dist) {
 			return;
 		}
 
