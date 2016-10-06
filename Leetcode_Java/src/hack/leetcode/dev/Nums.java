@@ -36,7 +36,7 @@ public class Nums {
 
 		while (num != 0) {
 			sb.insert(0, map[num & 15]);
-			num = (num >> 4);
+			num = (num >>> 4);
 		}
 
 		return sb.toString();
