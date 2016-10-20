@@ -11,7 +11,7 @@ import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class FileProcessor {
+public class FileProcessorI {
 	static HashMap<String, String> map = new HashMap<String, String>();
 	static HashMap<String, String> map2 = new HashMap<String, String>();
 
