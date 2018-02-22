@@ -67,6 +67,7 @@ public class FileProcessorII {
 				String oldCtpOffer = lines[3].toLowerCase();
 				String newCtpOffer = lines[1].toLowerCase();
 				map.put(oldCtpOffer, newCtpOffer);
+				map2.put(newCtpOffer, oldCtpOffer);
 				index++;
 			}
 		} catch (FileNotFoundException e) {
@@ -90,7 +91,7 @@ public class FileProcessorII {
 			String line = null;
 			int index = 0;
 			while ((line = reader.readLine()) != null) {
-				String[] lines = line.split("\t");
+				String[] lines = line.split(",");
 				if(index == 0){
 					bw.write(toLines(lines));
 					bw.newLine();
@@ -102,6 +103,9 @@ public class FileProcessorII {
 				String newCtpOfferId = map.get(ctpOfferId);
 				if(newCtpOfferId != null){
 					lines[3] = newCtpOfferId.toLowerCase();
+				}
+				if(map2.containsKey(ctpOfferId)){
+					lines[3] = "new offer already";
 				}
 				bw.write(toLines(lines));
 				bw.newLine();
@@ -160,11 +164,11 @@ public class FileProcessorII {
 	}
 
 	public static void main(String[] args) {
-		check("C:\\Users\\shye\\OneDrive\\Project\\Leetcode\\Leetcode_Shan_Java\\Leetcode_Java\\Data\\1", "C:\\Users\\shye\\OneDrive\\Project\\Leetcode\\Leetcode_Shan_Java\\Leetcode_Java\\Data\\2");
+//		check("C:\\Users\\shye\\OneDrive\\Project\\Leetcode\\Leetcode_Shan_Java\\Leetcode_Java\\Data\\1", "C:\\Users\\shye\\OneDrive\\Project\\Leetcode\\Leetcode_Shan_Java\\Leetcode_Java\\Data\\2");
 		
-//		getOfferMapping("C:\\Users\\shye\\OneDrive\\Project\\Leetcode\\Leetcode_Shan_Java\\Leetcode_Java\\Data\\QualIssueFixMap.csv");
+		getOfferMapping("C:\\Users\\shye\\OneDrive\\Project\\Leetcode\\Leetcode_Shan_Java\\Leetcode_Java\\Data\\QualIssueFixMap.csv");
 //		System.out.println(checkFile("C:\\Users\\shye\\OneDrive\\Project\\Leetcode\\Leetcode_Shan_Java\\Leetcode_Java\\Data\\CTPSubConversionFinal.txt"));
-//		updateFile("C:\\Users\\shye\\OneDrive\\Project\\Leetcode\\Leetcode_Shan_Java\\Leetcode_Java\\Data\\CTPOfferIds.txt", 
-//				"C:\\Users\\shye\\OneDrive\\Project\\Leetcode\\Leetcode_Shan_Java\\Leetcode_Java\\Data\\OfferConversion.txt");
+		updateFile("C:\\Users\\shye\\OneDrive\\Project\\Leetcode\\Leetcode_Shan_Java\\Leetcode_Java\\Data\\aa.csv", 
+				"C:\\Users\\shye\\OneDrive\\Project\\Leetcode\\Leetcode_Shan_Java\\Leetcode_Java\\Data\\OfferConversion.txt");
 	}
 }
